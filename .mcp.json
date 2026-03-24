@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "roblox-studio": {
-      "type": "sse",
-      "url": "http://localhost:3000/sse"
+      "command": "rbx-studio-mcp",
+      "args": ["--stdio"]
     }
   }
 }

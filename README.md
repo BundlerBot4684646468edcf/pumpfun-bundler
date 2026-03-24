@@ -83,45 +83,48 @@ To get started with the Pump.Fun Launch Bundle Tool, follow these steps:
 
 ## Roblox Studio MCP Integration
 
-Du kannst Claude Code direkt mit Roblox Studio verbinden, um Skripte zu lesen, zu schreiben und das Spiel-Hierarchy abzufragen.
+Du kannst Claude Code direkt mit Roblox Studio verbinden, um Skripte zu lesen, zu schreiben und die Workspace abzufragen.
 
-### Voraussetzungen
+### Installation
 
-1. **Roblox Studio MCP Plugin installieren:**
-   - Öffne Roblox Studio
-   - Gehe zu **Plugins > Manage Plugins**
-   - Suche nach **"Claude MCP"** oder **"MCP Server"** und installiere es
-   - Das Plugin startet automatisch einen lokalen Server auf `http://localhost:3000`
+Das MCP-Tool ist kein Roblox-Plugin, sondern ein separates Programm von Roblox:
+
+1. **MCP Server herunterladen:**
+   - Gehe zu: `https://github.com/Roblox/studio-rust-mcp-server/releases/latest`
+   - Windows: `rbx-studio-mcp.exe` herunterladen
+   - macOS: `macOS-rbx-studio-mcp.zip` herunterladen und entpacken
+   - Das Programm ausführen — es installiert sich automatisch und richtet das Roblox Studio Plugin ein
 
 2. **Claude Code konfigurieren:**
-   - Die Datei `.mcp.json` ist bereits im Projekt enthalten und konfiguriert Claude Code automatisch:
+   - Die Datei `.mcp.json` ist bereits im Projekt enthalten:
      ```json
      {
        "mcpServers": {
          "roblox-studio": {
-           "type": "sse",
-           "url": "http://localhost:3000/sse"
+           "command": "rbx-studio-mcp",
+           "args": ["--stdio"]
          }
        }
      }
      ```
+   - Auf macOS ggf. den vollen Pfad angeben:
+     `"/Applications/RobloxStudioMCP.app/Contents/MacOS/rbx-studio-mcp"`
 
 ### Verwendung
 
 1. Starte Roblox Studio und öffne dein Projekt
-2. Stelle sicher, dass das MCP Plugin aktiv ist (grünes Symbol in der Plugin-Leiste)
-3. Starte Claude Code in diesem Verzeichnis:
+2. Starte Claude Code in diesem Verzeichnis:
    ```bash
    claude
    ```
-4. Claude kann jetzt direkt mit Roblox Studio kommunizieren:
+3. Claude kann jetzt direkt mit Roblox Studio kommunizieren:
    - Skripte lesen und bearbeiten
    - Objekte in der Workspace abfragen
    - Änderungen live in Studio einspielen
 
 ### Hinweis
 
-Der MCP Server muss laufen, bevor du Claude Code startest. Wenn der Server nicht verfügbar ist, funktionieren die Roblox Studio Tools nicht.
+`rbx-studio-mcp` muss im PATH verfügbar sein (nach der Installation normalerweise automatisch). Falls nicht, den vollständigen Pfad in `.mcp.json` eintragen.
 
 ---
 
