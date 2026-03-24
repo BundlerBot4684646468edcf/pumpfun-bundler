@@ -81,6 +81,50 @@ To get started with the Pump.Fun Launch Bundle Tool, follow these steps:
 3. **Profit:**
     Sit back and profit from your successful Pump.Fun launches!
 
+## Roblox Studio MCP Integration
+
+Du kannst Claude Code direkt mit Roblox Studio verbinden, um Skripte zu lesen, zu schreiben und das Spiel-Hierarchy abzufragen.
+
+### Voraussetzungen
+
+1. **Roblox Studio MCP Plugin installieren:**
+   - Öffne Roblox Studio
+   - Gehe zu **Plugins > Manage Plugins**
+   - Suche nach **"Claude MCP"** oder **"MCP Server"** und installiere es
+   - Das Plugin startet automatisch einen lokalen Server auf `http://localhost:3000`
+
+2. **Claude Code konfigurieren:**
+   - Die Datei `.mcp.json` ist bereits im Projekt enthalten und konfiguriert Claude Code automatisch:
+     ```json
+     {
+       "mcpServers": {
+         "roblox-studio": {
+           "type": "sse",
+           "url": "http://localhost:3000/sse"
+         }
+       }
+     }
+     ```
+
+### Verwendung
+
+1. Starte Roblox Studio und öffne dein Projekt
+2. Stelle sicher, dass das MCP Plugin aktiv ist (grünes Symbol in der Plugin-Leiste)
+3. Starte Claude Code in diesem Verzeichnis:
+   ```bash
+   claude
+   ```
+4. Claude kann jetzt direkt mit Roblox Studio kommunizieren:
+   - Skripte lesen und bearbeiten
+   - Objekte in der Workspace abfragen
+   - Änderungen live in Studio einspielen
+
+### Hinweis
+
+Der MCP Server muss laufen, bevor du Claude Code startest. Wenn der Server nicht verfügbar ist, funktionieren die Roblox Studio Tools nicht.
+
+---
+
 ## Support and Contributions
 
 As an open-source project, we welcome contributions and feedback. If you have any questions or need assistance, please contact us on Telegram at @benorizz0.
